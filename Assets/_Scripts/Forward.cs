@@ -29,13 +29,19 @@ public class Forward : MonoBehaviour
 		transform.position = new Vector3(transform.position.x + (m_velocity * m_direction.x * Time.deltaTime),
 																			transform.position.y,
 																			transform.position.z + (m_velocity * m_direction.z * Time.deltaTime));
-		Debug.Log(Vector3.Distance(ball.transform.position, transform.position));
+		//Debug.Log(Vector3.Distance(ball.transform.position, transform.position));
 	}
 
 	void Shoot(Collider col)
 	{
 		m_shootforce = 15.0f;
-		m_angle = Random.Range(-0.3f, 0.3f);
+		int r = Random.Range(0, 5);
+		Debug.Log(r);
+		if (r <=2)
+			m_angle = Random.Range(-0.2f, 0.2f);
+		else
+			m_angle = Random.Range(-0.8f, 0.8f);
+		
 		col.GetComponent<Ball>().m_direction.x = Mathf.Cos(m_angle);
 		col.GetComponent<Ball>().m_direction.z = Mathf.Sin(m_angle);
 		m_velocity = 0.0f;
@@ -56,7 +62,7 @@ public class Forward : MonoBehaviour
 			{
 				Shoot(col);
 			}
-			else// if (transform.position.x < 10.0f)
+			else
 			{
 				MoveForward(col);
 			}
