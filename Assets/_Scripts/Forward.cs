@@ -25,7 +25,7 @@ public class Forward : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		m_direction = ball.transform.position - transform.position;
+		m_direction = (ball.transform.position - transform.position).normalized;
 		transform.position = new Vector3(transform.position.x + (m_velocity * m_direction.x * Time.deltaTime),
 																			transform.position.y,
 																			transform.position.z + (m_velocity * m_direction.z * Time.deltaTime));
