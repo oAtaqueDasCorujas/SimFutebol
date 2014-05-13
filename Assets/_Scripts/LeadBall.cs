@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class NewBehaviourScript : MonoBehaviour 
+public class LeadBall : MonoBehaviour 
 {
-	void LeadBall(GameObject ball, GameObject goal)
+	void CarryBall(GameObject ball, GameObject goal)
 	{
 		Vector3 ball_direction = (goal.transform.position - ball.transform.position).normalized;
 		ball.GetComponent<Ball>().m_direction.x = ball_direction.x;
