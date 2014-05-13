@@ -29,14 +29,13 @@ public class Forward : MonoBehaviour
 		transform.position = new Vector3(transform.position.x + (m_velocity * m_direction.x * Time.deltaTime),
 																			transform.position.y,
 																			transform.position.z + (m_velocity * m_direction.z * Time.deltaTime));
-		//Debug.Log(Vector3.Distance(ball.transform.position, transform.position));
 	}
 
 	void Shoot(Collider col)
 	{
 		m_shootforce = 15.0f;
 		int r = Random.Range(0, 5);
-		Debug.Log(r);
+
 		if (r <=2)
 			m_angle = Random.Range(-0.2f, 0.2f);
 		else
