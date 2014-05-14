@@ -3,15 +3,17 @@ using System.Collections;
 
 public class Ball : MonoBehaviour 
 {
-	public float m_impulse, m_desaceleracao, m_velocity;
-	public Vector3 m_direction;
+	//impulso, fator de desaceleração, velocidade
+	public float mf_impulse, mf_desaceleracao, mf_velocity;
+	//direção, setada pelo player
+	public Vector3 mvec3_direction;
 
 	void Awake()
 	{
-		m_impulse = 0.0f;
-		m_desaceleracao = 0.1f;
-		m_velocity = 0.0f;
-		m_direction = Vector3.zero;
+		mf_impulse = 0.0f;
+		mf_desaceleracao = 0.1f;
+		mf_velocity = 0.0f;
+		mvec3_direction = Vector3.zero;
 	}
 
 	// Use this for initialization
@@ -23,12 +25,12 @@ public class Ball : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		m_velocity = m_impulse;
-		transform.position = new Vector3(transform.position.x + (m_velocity * m_direction.x * Time.deltaTime),
+		mf_velocity = mf_impulse;
+		transform.position = new Vector3(transform.position.x + (mf_velocity * mvec3_direction.x * Time.deltaTime),
 													transform.position.y,
-													transform.position.z + (m_velocity * m_direction.z * Time.deltaTime));
-		m_impulse -= m_desaceleracao;
-		if (m_impulse <= 0.001)
-			m_impulse = 0.0f;
+													transform.position.z + (mf_velocity * mvec3_direction.z * Time.deltaTime));
+		mf_impulse -= mf_desaceleracao;
+		if (mf_impulse <= 0.001)
+			mf_impulse = 0.0f;
 	}
 }

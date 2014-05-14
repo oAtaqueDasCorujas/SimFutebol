@@ -3,13 +3,22 @@ using System.Collections;
 
 public class Player : MonoBehaviour 
 {
-	public GameObject ball;
-	public float m_velocity, m_shootforce, m_angle;
-	public Vector3 m_direction, ball_direction;
+	//Ponteiro para bola 
+	public GameObject mp_ball;
+	//Ponteiro para o gol que faz gol
+	public GameObject	mp_goal;
+	//ponteiro para o jogador alvo
+	public GameObject mp_target;
+	//direção do jogador(passível de mudança de tipo) e da bola
+	public Vector3 mvec3_direction, vec3_ball_direction;
+	//velocidade, força do chute, precisão do chute
+	public float mf_velocity, mf_shootforce, mf_shootprecision;
 
 	void Awake()
 	{
-		ball = GameObject.Find("Bola");
+		mp_ball = GameObject.Find("Bola");
+		mvec3_direction = vec3_ball_direction = Vector3.zero;
+		mf_shootforce = mf_velocity = 0.0f;
 	}
 
 	// Use this for initialization
