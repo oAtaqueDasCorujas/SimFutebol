@@ -23,6 +23,7 @@ public class Mind : MonoBehaviour
 
 	public GameObject behavioursHolder;
 	public GameObject ball;
+	public GameObject goaltoscore;
 
 	public List<Body> enemies;
 	public List<Body> allies;
@@ -37,6 +38,10 @@ public class Mind : MonoBehaviour
 	void Start()
 	{
 		ball = GameObject.Find("Bola");
+		if (myTeam == Team.Red)
+			goaltoscore = GameObject.Find("TraveDir");
+		else
+			goaltoscore = GameObject.Find("TraveEsq");
 		behaviours = new List<AbstractBehaviour>();
 
 		foreach (AbstractBehaviour ab in behavioursHolder.GetComponents<AbstractBehaviour>())

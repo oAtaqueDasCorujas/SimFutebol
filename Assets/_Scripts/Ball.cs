@@ -33,4 +33,9 @@ public class Ball : MonoBehaviour
 		if (mf_impulse <= 0.001)
 			mf_impulse = 0.0f;
 	}
+
+	void OnTriggerEnter(Collider col)
+	{
+		//Debug.Log(col.name);
+	}
 }

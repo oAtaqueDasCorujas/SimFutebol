@@ -14,6 +14,15 @@ public class Body : MonoBehaviour
 {
 	public float m_velocity;
 	public float m_shootforce;
+  public float m_actionray = 5;
+	public float m_minactionray = 2;
+	public float m_ballaction = 1;
+	public Vector3 m_initpos;
+
+	public void Awake()
+	{
+		m_initpos = transform.position;
+	}
 
 	public void Move(Vector3 direction)
 	{
