@@ -14,8 +14,7 @@ using System.Collections.Generic;
 public enum Team
 {
 	Blue,
-	Red,
-	Yellow
+	Red
 }
 
 public class Mind : MonoBehaviour
@@ -23,19 +22,21 @@ public class Mind : MonoBehaviour
 	public float visionRadius = 100f;
 
 	public GameObject behavioursHolder;
-	public Body body;
-	public List<AbstractBehaviour> behaviours;
-	public Team myTeam;
+	public GameObject ball;
 
 	public List<Body> enemies;
 	public List<Body> allies;
-
-	public AbstractBehaviour lastBehaviours;
-
+	public Body body;
 	public Body target;
 
+	public List<AbstractBehaviour> behaviours;
+	public AbstractBehaviour lastBehaviours;
+
+	public Team myTeam;
+	
 	void Start()
 	{
+		ball = GameObject.Find("Bola");
 		behaviours = new List<AbstractBehaviour>();
 
 		foreach (AbstractBehaviour ab in behavioursHolder.GetComponents<AbstractBehaviour>())
@@ -53,18 +54,17 @@ public class Mind : MonoBehaviour
 		allies.Clear();
 
 		Collider[] cols = Physics.OverlapSphere(transform.position, visionRadius);
-		
+
 		foreach (Collider c in cols)
 		{
 			Body body = c.gameObject.GetComponent<Body>();
-			
+
 			if (body != null && body.gameObject != this.gameObject)
 			{
 				if (myTeam == body.GetComponent<Mind>().myTeam)
 					allies.Add(body);
 				else
 					enemies.Add(body);
-
 			}
 		}
 

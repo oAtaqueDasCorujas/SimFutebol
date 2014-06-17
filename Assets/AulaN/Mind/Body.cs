@@ -12,59 +12,23 @@ using UnityEngine;
 		
 public class Body : MonoBehaviour
 {
-	public float life;
-	public float speed;
-	public float damage;
-	public GameObject bullet;
-
-	public float cooldown = 1;
-	public float cooldownTimer;
+	public float m_velocity;
+	public float m_shootforce;
 
 	public void Move(Vector3 direction)
 	{
 		if (direction != Vector3.zero)
 		{
-			float stepX = direction.x * Time.deltaTime * speed;
-			float stepY = direction.y * Time.deltaTime * speed;
+			float stepX = direction.x * Time.deltaTime * m_velocity;
+			float stepY = direction.y * Time.deltaTime * m_velocity;
 			
 			transform.position = new Vector3(transform.position.x + stepX, transform.position.y + stepY, 0);
 		}
 	}
 
-	public bool CanShoot()
-	{
-		return (cooldownTimer < Time.time);
-	}
-
-	public void Shoot(Vector3 direction)
-	{
-		if (cooldownTimer < Time.time) 
-		{
-			Bullet b = (GameObject.Instantiate (bullet, gameObject.transform.position, Quaternion.identity) as GameObject).GetComponent<Bullet> ();
-			b.Shoot (this, direction);
-			cooldownTimer = Time.time + cooldown;
-		}
-	}
-
-	public void TakeDamage(float damage)
-	{
-		life -= damage;
-
-		if (life < 0)
-			Die();
-	}
-
-	public void Die()
-	{
-		//Do something fancy here
-	}
-
 	public void Update()
 	{
-		if (Input.GetKey (KeyCode.A)) 
-		{
-			Shoot (Vector3.one);
-		}
+
 	}
 }
 
