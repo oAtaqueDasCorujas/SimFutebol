@@ -3,6 +3,7 @@ using System.Collections;
 
 public class PassBall : AbstractBehaviour 
 {
+	public float passforce = 0;
 	public override void Act()
 	{
 		/*força ou velocidade do toque da bola retirada da formula
@@ -12,10 +13,9 @@ public class PassBall : AbstractBehaviour
 		 como iremos implementar a aceleração, impulso e 
 		 velocidade da bola*/
 
-		float passforce = 0;
-		passforce = Mathf.Sqrt(2 * 5f * Vector3.Distance(owner.target.transform.position, transform.position)) + owner.target.m_velocity * 2;
+		//passforce = Mathf.Sqrt(2 * 5f * Vector3.Distance(owner.target.transform.position, transform.position)) + owner.target.m_velocity * 2;
 		//passforce = (Mathf.Pow(owner.target.m_velocity, 2) * Vector3.Distance(owner.target.transform.position, transform.position)) / 2;
-		//passforce = Mathf.Sqrt(2 * 5 * Vector3.Distance(owner.target.transform.position, transform.position)) + (velocity - owner.target.m_velocity) * 2;
+		passforce = Mathf.Sqrt(2 * 5 * Vector3.Distance(owner.target.transform.position, transform.position)) + (owner.target.m_velocity) * 2;
 		
 		//setando direção e força para tocar a bola
 		Vector3 ball_direction = (owner.target.transform.position - transform.position).normalized;
