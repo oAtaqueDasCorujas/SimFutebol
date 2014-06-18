@@ -22,6 +22,7 @@ public class PassBall : AbstractBehaviour
 		owner.ball.GetComponent<Ball>().mvec3_direction.x = ball_direction.x;
 		owner.ball.GetComponent<Ball>().mvec3_direction.y = ball_direction.y;
 		owner.ball.GetComponent<Ball>().mf_impulse = passforce;
+		passforce = 0.0f;
 		Debug.Log("Passing Ball");
 	}
 
@@ -32,6 +33,7 @@ public class PassBall : AbstractBehaviour
 		 distancia minima de ação...*/
 		if (owner.target != null)
 			if (Vector3.Distance(owner.target.transform.position, transform.position) > owner.body.m_minactionray)
+				if(Vector3.Distance(owner.ball.transform.position, transform.position) < owner.body.m_ballaction)
 			return true;
 		return false;
 	}
