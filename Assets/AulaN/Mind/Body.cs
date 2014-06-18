@@ -17,6 +17,7 @@ public class Body : MonoBehaviour
   public float m_actionray = 5;
 	public float m_minactionray = 2;
 	public float m_ballaction = 1;
+	public float m_shootdistance = 5;
 	public Vector3 m_initpos;
 
 	public void Awake()

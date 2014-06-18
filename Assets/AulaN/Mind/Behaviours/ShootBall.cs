@@ -32,7 +32,10 @@ public class ShootBall : AbstractBehaviour
 	{
 		/*Se a distancia a até a bola for menor que
 			que a distancia minima de ação da bola*/
-		if (Vector3.Distance(owner.ball.transform.position, transform.position) < owner.body.m_ballaction)
+		if (Vector3.Distance(owner.ball.transform.position, transform.position) 
+					< owner.body.m_ballaction &&
+				Vector3.Distance(owner.goaltoscore.transform.position, transform.position)
+					< owner.body.m_shootdistance)
 			return true;
 		return false;
 	}
