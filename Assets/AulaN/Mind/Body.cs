@@ -14,7 +14,7 @@ public class Body : MonoBehaviour
 {
 	public float m_velocity;
 	public float m_shootforce;
-  public float m_actionray = 5;
+  public float m_actionray = 10;
 	public float m_minactionray = 2;
 	public float m_ballaction = 1;
 	public float m_shootdistance = 5;

@@ -8,10 +8,11 @@ public class SelectTarget : AbstractBehaviour
 
 	public override void Act()
 	{
+		Debug.Log("trying to search for a new target");
 		//Se nenhum alvo ainda foi selecionado
 		if (owner.target == null)
 		{
-			owner.target = SelectForNullTarget();
+			owner.target = SearchForTarget();
 		}
 		//Se já há um alvo previamente selecionado
 		if (owner.target != null)
@@ -25,9 +26,9 @@ public class SelectTarget : AbstractBehaviour
 		//Se o jogador estiver a uma distancia minima da bola
 		//ele pode procurar um alvo
 		if (Vector3.Distance(owner.ball.transform.position, transform.position) 
-				< owner.body.m_ballaction)
-			return true;
-		return false;
+				> owner.body.m_ballaction)
+			return false;
+		return true;
 	}
 
 	public Body SelectForNullTarget()
@@ -45,15 +46,30 @@ public class SelectTarget : AbstractBehaviour
 						transform.position)) < owner.body.m_actionray)
 				{
 					//Alvo é selecionado
-					//Debug.Log("Procurando alvo novo");
+					Debug.Log("Procurando alvo novo");
 					t_bodytarget = p_target;
 				}
 			}
 		}
 		/*Caso nenhum alvo seja selecionado
 		 executa-se a função novamente*/
-		if (t_bodytarget == null)
-			SelectForNullTarget();
+		/*if (t_bodytarget == null)
+			SelectForNullTarget();*/
+		return t_bodytarget;
+	}
+
+	public Body SearchForTarget()
+	{
+		foreach (Body p_target in owner.allies)
+		{
+			if ((Vector3.Distance(p_target.transform.position,
+						transform.position)) > owner.body.m_minactionray)
+			{
+				//Alvo é selecionado
+				Debug.Log("Procurando alvo novo");
+				t_bodytarget = p_target;
+			}
+		}
 		return t_bodytarget;
 	}
 
@@ -63,7 +79,8 @@ public class SelectTarget : AbstractBehaviour
 		float distance = Vector3.Distance(owner.target.transform.position, transform.position);
 		//distancia do alvo antigo até o gol
 		float g_distance = Vector3.Distance(owner.goaltoscore.transform.position, owner.target.transform.position);
-		
+		Debug.Log("Procurando melhor alvo");
+
 		foreach (Body p_target in owner.allies)
 		{
 			/*Se a distancia até o objeto for menor que

@@ -15,6 +15,7 @@ public class Wait : AbstractBehaviour
 	public override void Act ()
 	{
 		owner.body.Move(Vector3.zero);
+		Debug.Log("Waiting");
 	}
 
 	public override bool Think ()
