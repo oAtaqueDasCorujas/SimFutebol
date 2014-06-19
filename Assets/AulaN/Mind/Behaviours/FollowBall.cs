@@ -19,10 +19,12 @@ public class FollowBall : AbstractBehaviour
 		 ou
 		 se a distancia até a bola for maior que o
 		 raio de ação do personagem...*/
+        
 		if (Vector3.Distance(owner.ball.transform.position, 
 			transform.position) <= owner.body.m_ballaction ||
-				Vector3.Distance(owner.ball.transform.position, 
-			transform.position) > owner.body.m_actionray)
+				Vector3.Distance(owner.ball.transform.position,
+            transform.position) > owner.body.m_actionray || 
+            Vector3.Distance(owner.body.m_initpos, transform.position) > owner.body.m_actionray/2)
 			return false;
 		return true;
 	}

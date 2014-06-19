@@ -29,8 +29,10 @@ public class Ball : MonoBehaviour
 		transform.position = new Vector3(transform.position.x + (mf_velocity * mvec3_direction.x * Time.deltaTime),
 																		transform.position.y + (mf_velocity * mvec3_direction.y * Time.deltaTime),
 																		0.0f);
-		mf_impulse -= mf_desaceleracao;
-		if (mf_impulse <= 1.0f)
-			mf_impulse = 0.0f;
+		
+        mf_impulse -= mf_desaceleracao;
+		
+        if (mf_impulse <= 1.0f)
+			mf_impulse = 1.0f;
 	}
 }

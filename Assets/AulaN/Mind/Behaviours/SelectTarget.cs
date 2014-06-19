@@ -62,8 +62,11 @@ public class SelectTarget : AbstractBehaviour
 	{
 		foreach (Body p_target in owner.allies)
 		{
-			if ((Vector3.Distance(p_target.transform.position,
-						transform.position)) > owner.body.m_minactionray)
+			/*if ((Vector3.Distance(p_target.transform.position,
+						transform.position)) > owner.body.m_minactionray)*/
+            if (Vector3.Distance(p_target.transform.position,
+                        owner.goaltoscore.transform.position) < Vector3.Distance(transform.position,
+                        owner.goaltoscore.transform.position))
 			{
 				//Alvo é selecionado
 				//Debug.Log("Procurando alvo novo");

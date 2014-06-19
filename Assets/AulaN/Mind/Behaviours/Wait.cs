@@ -14,7 +14,9 @@ public class Wait : AbstractBehaviour
 {
 	public override void Act ()
 	{
-		owner.body.Move(Vector3.zero);
+
+        Vector3 direction = new Vector3(UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f, 1f));
+        owner.body.Move(direction);
 		//Debug.Log("Waiting");
 	}
 
