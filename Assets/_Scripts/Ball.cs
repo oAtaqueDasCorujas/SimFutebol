@@ -19,7 +19,8 @@ public class Ball : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
-	
+        mf_impulse = 5.0f;
+        mvec3_direction = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
 	}
 	
 	// Update is called once per frame
