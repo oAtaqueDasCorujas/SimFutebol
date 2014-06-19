@@ -17,14 +17,14 @@ public class ShootBall : AbstractBehaviour
 			angle = Random.Range(-0.8f, 0.8f);
 
 		//Passado angulo de direção
-		owner.ball.GetComponent<Ball>().mvec3_direction.x = Mathf.Cos(angle);
+		if (owner.myTeam == Team.Red)
+			owner.ball.GetComponent<Ball>().mvec3_direction.x = Mathf.Cos(angle);
+		else
+			owner.ball.GetComponent<Ball>().mvec3_direction.x = -Mathf.Cos(angle);
 		owner.ball.GetComponent<Ball>().mvec3_direction.y = Mathf.Sin(angle);
 		
 		//Passado força do chute
-		if (owner.myTeam == Team.Red)
-			owner.ball.GetComponent<Ball>().mf_impulse = owner.body.m_shootforce;
-		else
-			owner.ball.GetComponent<Ball>().mf_impulse = -owner.body.m_shootforce;
+		owner.ball.GetComponent<Ball>().mf_impulse = owner.body.m_shootforce;
 
 		//Debug.Log("Shooting Ball");
 	}
