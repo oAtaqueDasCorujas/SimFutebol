@@ -8,7 +8,7 @@ public class Wander : AbstractBehaviour
 
     public override void Act()
     {
-        if (Vector3.Distance(owner.body.m_initpos, transform.position) < 2)
+        if (Vector3.Distance(owner.body.m_initpos, transform.position) < owner.body.m_minactionray)
         {
             if (tempo >= 1)
             {
