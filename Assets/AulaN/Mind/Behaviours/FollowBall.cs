@@ -21,11 +21,25 @@ public class FollowBall : AbstractBehaviour
 		 raio de ação do personagem...*/
         
 		if (Vector3.Distance(owner.ball.transform.position, 
-			transform.position) <= owner.body.m_ballaction ||
+			transform.position) < owner.body.m_ballaction ||
 				Vector3.Distance(owner.ball.transform.position,
-            transform.position) > owner.body.m_actionray || 
-            Vector3.Distance(owner.body.m_initpos, transform.position) > owner.body.m_actionray/2)
+            transform.position) > owner.body.m_actionray ||
+						BallAlreadyOur())
 			return false;
 		return true;
+	}
+
+	//Verifica se alguem do meu time ja esta proximo a bola
+	public bool BallAlreadyOur()
+	{
+		for (int i = 0; i < owner.allies.Count; i++)
+		{
+			if (Vector3.Distance(owner.allies[i].transform.position,
+					owner.ball.transform.position) < owner.body.m_ballaction*2)
+			{
+				return true;
+			}
+		}
+		return false;
 	}
 }

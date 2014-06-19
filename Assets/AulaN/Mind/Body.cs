@@ -22,7 +22,7 @@ public class Body : MonoBehaviour
 
 	public void Awake()
 	{
-		m_actionray = 10;
+		m_actionray = 5;
 		m_minactionray = 2;
 		m_ballaction = 1;
 		m_shootdistance = 10;

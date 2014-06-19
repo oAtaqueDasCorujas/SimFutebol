@@ -15,7 +15,7 @@ public class PassBall : AbstractBehaviour
 
 		//passforce = Mathf.Sqrt(2 * 5f * Vector3.Distance(owner.target.transform.position, transform.position)) + owner.target.m_velocity * 2;
 		//passforce = (Mathf.Pow(owner.target.m_velocity, 2) * Vector3.Distance(owner.target.transform.position, transform.position)) / 2;
-		passforce = Mathf.Sqrt(2 * 5 * Vector3.Distance(owner.target.transform.position, transform.position)) + (owner.target.m_velocity) * 2;
+		passforce = Mathf.Sqrt(2 * 3 * Vector3.Distance(owner.target.transform.position, transform.position)) + (owner.target.m_velocity) * 2;
 		
 		//setando direção e força para tocar a bola
 		Vector3 ball_direction = (owner.target.transform.position - transform.position).normalized;
