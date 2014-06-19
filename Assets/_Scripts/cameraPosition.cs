@@ -5,7 +5,7 @@ public class cameraPosition : MonoBehaviour {
         
     public GameObject camera;
     public Transform[] posCamera;
-    public int index;
+    public static int index;
 
 	void Update () {
 
