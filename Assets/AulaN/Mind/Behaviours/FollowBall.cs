@@ -8,7 +8,7 @@ public class FollowBall : AbstractBehaviour
 		//Passa-se a direção da bola para a função de movimento
 		Vector3 direction = (owner.ball.transform.position - transform.position).normalized;
 		owner.body.Move(direction);
-		Debug.Log("Moving to Ball");
+		//Debug.Log("Moving to Ball");
 		//Debug.Log(transform.position);
 	}
 

@@ -5,6 +5,7 @@ public class ShootBall : AbstractBehaviour
 {
 	public override void Act()
 	{
+		//Debug.Log("Shooting Ball");
 		/*Rand para setar angulo de direção do chute
 		 *ao gol*/
 		int r = Random.Range(0, 5);
@@ -25,18 +26,23 @@ public class ShootBall : AbstractBehaviour
 		else
 			owner.ball.GetComponent<Ball>().mf_impulse = -owner.body.m_shootforce;
 
-		Debug.Log("Shooting Ball");
+		//Debug.Log("Shooting Ball");
 	}
 
 	public override bool Think()
 	{
+		//Debug.Log("How i shoot?");
 		/*Se a distancia a até a bola for menor que
 			que a distancia minima de ação da bola*/
 		if (Vector3.Distance(owner.ball.transform.position, transform.position) 
-					< owner.body.m_ballaction &&
-				Vector3.Distance(owner.goaltoscore.transform.position, transform.position)
-					< owner.body.m_shootdistance)
-			return true;
+					<= owner.body.m_ballaction)
+			if (Vector3.Distance(owner.goaltoscore.transform.position,
+						transform.position) <= owner.body.m_shootdistance)
+			{
+				//Debug.Log("Now i can shoot");
+				return true;
+			}
+		//Debug.Log("I still can't shoot: " + owner.body.m_shootdistance);
 		return false;
 	}
 }

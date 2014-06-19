@@ -23,7 +23,7 @@ public class PassBall : AbstractBehaviour
 		owner.ball.GetComponent<Ball>().mvec3_direction.y = ball_direction.y;
 		owner.ball.GetComponent<Ball>().mf_impulse = passforce;
 		passforce = 0.0f;
-		Debug.Log("Passing Ball");
+		//Debug.Log("Passing Ball");
 	}
 
 	public override bool Think()

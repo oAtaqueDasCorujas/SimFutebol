@@ -8,7 +8,7 @@ public class SelectTarget : AbstractBehaviour
 
 	public override void Act()
 	{
-		Debug.Log("trying to search for a new target");
+		//Debug.Log("trying to search for a new target");
 		//Se nenhum alvo ainda foi selecionado
 		if (owner.target == null)
 		{
@@ -46,7 +46,7 @@ public class SelectTarget : AbstractBehaviour
 						transform.position)) < owner.body.m_actionray)
 				{
 					//Alvo é selecionado
-					Debug.Log("Procurando alvo novo");
+					//Debug.Log("Procurando alvo novo");
 					t_bodytarget = p_target;
 				}
 			}
@@ -66,7 +66,7 @@ public class SelectTarget : AbstractBehaviour
 						transform.position)) > owner.body.m_minactionray)
 			{
 				//Alvo é selecionado
-				Debug.Log("Procurando alvo novo");
+				//Debug.Log("Procurando alvo novo");
 				t_bodytarget = p_target;
 			}
 		}
@@ -79,7 +79,7 @@ public class SelectTarget : AbstractBehaviour
 		float distance = Vector3.Distance(owner.target.transform.position, transform.position);
 		//distancia do alvo antigo até o gol
 		float g_distance = Vector3.Distance(owner.goaltoscore.transform.position, owner.target.transform.position);
-		Debug.Log("Procurando melhor alvo");
+		//Debug.Log("Procurando melhor alvo");
 
 		foreach (Body p_target in owner.allies)
 		{
