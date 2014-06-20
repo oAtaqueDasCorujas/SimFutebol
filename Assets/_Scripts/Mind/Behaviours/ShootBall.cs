@@ -20,7 +20,7 @@ public class ShootBall : AbstractBehaviour
 		owner.ball.GetComponent<Ball>().mf_impulse = owner.body.m_shootforce;
 
 		//Debug.Log("Shooting Ball");
-		Debug.Log(t_direction);
+		//Debug.Log(t_direction);
 	}
 
 	public override bool Think()

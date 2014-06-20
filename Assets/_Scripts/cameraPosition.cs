@@ -26,11 +26,22 @@ public class cameraPosition : MonoBehaviour {
 
     void Choice() {
 
+        if (Input.GetButtonDown("Fire1"))
+        {
+            if (index < 9)
+                index++;
+            else
+                index = 0;
+
+            camera.transform.position = posCamera[index].position;
+            camera.transform.rotation = posCamera[index].rotation;
+        }            
+
         if (Input.inputString.Length > 0) {
 		
 			string keyPressedString = Input.inputString.Substring
 									(Input.inputString.Length - 1, 1);
-			Debug.Log(keyPressedString);
+			//Debug.Log(keyPressedString);
 
             index = int.Parse(keyPressedString);
 
