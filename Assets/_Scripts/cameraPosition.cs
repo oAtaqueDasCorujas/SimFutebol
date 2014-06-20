@@ -7,6 +7,12 @@ public class cameraPosition : MonoBehaviour {
     public Transform[] posCamera;
     public static int index;
 
+    void Start()
+    {
+        camera.transform.position = posCamera[index].position;
+        camera.transform.rotation = posCamera[index].rotation;
+    }
+
 	void Update () {
 
         Choice();
